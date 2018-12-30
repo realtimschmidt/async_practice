@@ -1,11 +1,13 @@
-doThis(andThenThis)
+const andThenThis = () => console.log('and then this')
 
-function andThenThis() {
-  console.log('and then this')
-}
-
-function doThis(callback) {
+const doThis = (callback) => {
   console.log('this first')
-
+  
   callback()
 }
+
+console.log('START')
+
+doThis(andThenThis)
+
+console.log('END')
