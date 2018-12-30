@@ -1,4 +1,9 @@
-const myPromise = new Promise(function(resolve, reject) {
+// output:
+// doing something super cool 
+// 'fine' when true and 'error' when false
+
+
+const myPromise = new Promise((resolve, reject) => {
   console.log('doing something super cool')
   const codeIsFine = true
   if (codeIsFine) {
@@ -8,11 +13,15 @@ const myPromise = new Promise(function(resolve, reject) {
   }
 })
 
+const whenOk = (res) => {
+  console.log(res)
+  return res
+}
+
+const notOk = (err) => console.error(err)
+
 myPromise
-  .then(function whenOk(response) {
-    console.log(response)
-    return response
-  })
-  .catch(function notOk(err) {
-    console.error(err)
-  })
+  .then((response) => 
+    whenOk(response))
+  .catch((error) =>
+    notOk(error))
